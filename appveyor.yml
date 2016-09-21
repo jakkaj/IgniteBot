@@ -1,3 +1,4 @@
+#Thanks to chris for the inspiration from http://help.appveyor.com/discussions/problems/4716-aspnet-core-rc2-publishing-to-azure-app-service
 version: '1.0.{build}'
 configuration:
 - Release
@@ -8,16 +9,16 @@ environment:
 init:
 - ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
 before_build:
-- cmd: >-
-    npm install -g gulp bower typings
+#- cmd: >-
+   # npm install -g gulp bower typings
 - appveyor-retry dotnet restore -v Minimal
 build:
   project: src\IgniteBot\IgniteBot.sln
   parallel: true
   verbosity: minimal
 after_build:
-- cmd: dotnet publish src\adapt-web -o artifacts\publish -c Debug
+- cmd: dotnet publish src\IgniteBot\IgniteBot.Web -o artifacts\publish -c Debug
 artifacts:
 - path: artifacts\publish
-  name: adapt-web
+  name: IgniteBot
   type: WebDeployPackage
