@@ -17,7 +17,7 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
-- cmd: dotnet publish src\IgniteBot\IgniteBot.Web -o artifacts\publish -c %CONFIGURATION%
+- cmd: dotnet publish src\IgniteBot\IgniteBot.Web -o artifacts\publish -c %CONFIGURATION% --framework net461 --no-build
 artifacts:
 - path: artifacts\publish
   name: IgniteBot
