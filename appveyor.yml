@@ -1,0 +1,23 @@
+version: '1.0.{build}'
+configuration:
+- Release
+platform: Any CPU
+environment:
+  # Don't report back to the mothership
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+before_build:
+- cmd: >-
+    npm install -g gulp bower typings
+- appveyor-retry dotnet restore -v Minimal
+build:
+  project: src\IgniteBot\IgniteBot.sln
+  parallel: true
+  verbosity: minimal
+after_build:
+- cmd: dotnet publish src\adapt-web -o artifacts\publish -c Debug
+artifacts:
+- path: artifacts\publish
+  name: adapt-web
+  type: WebDeployPackage
