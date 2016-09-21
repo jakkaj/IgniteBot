@@ -17,8 +17,17 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
-- cmd: dotnet publish src\IgniteBot\IgniteBot.Web -o artifacts\publish -c Debug
+- cmd: dotnet publish src\IgniteBot\IgniteBot.Web -o artifacts\publish -c %CONFIGURATION%
 artifacts:
 - path: artifacts\publish
   name: IgniteBot
   type: WebDeployPackage
+deploy:
+  provider: WebDeploy
+  server:dxignitebot-dev.scm.azurewebsites.net:443
+  website:dxignitebot__dev
+  username:$dxignitebot__dev
+  password:jpyWYDNpO5XxcogDp6EFbrO/jjIueKNioWvM8gz5WZgJWEzp8trKORzORSUWEewWmohpwkxUh/sn8oTpzNLNqA==
+  ntlm: false
+  remove_files: true
+  artifact:IgniteBot
