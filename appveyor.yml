@@ -27,7 +27,8 @@ deploy:
   server: https://dxignitebot-dev.scm.azurewebsites.net:443/msdeploy.axd?site=dxignitebot__dev
   website: dxignitebot__dev
   username: $dxignitebot__dev
-  password: jpyWYDNpO5XxcogDp6EFbrO/jjIueKNioWvM8gz5WZgJWEzp8trKORzORSUWEewWmohpwkxUh/sn8oTpzNLNqA==
+  password: 
+    secure: jpyWYDNpO5XxcogDp6EFbrO/jjIueKNioWvM8gz5WZgJWEzp8trKORzORSUWEewWmohpwkxUh/sn8oTpzNLNqA==
   ntlm: false
   remove_files: true
   artifact: IgniteBot
