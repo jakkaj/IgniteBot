@@ -33,4 +33,5 @@ deploy:
   ntlm: false
   remove_files: true
   aspnet_core: true
+  aspnet_core_force_restart: true
   artifact: IgniteBot
