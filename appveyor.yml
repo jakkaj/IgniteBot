@@ -32,4 +32,5 @@ deploy:
     secure: jpyWYDNpO5XxcogDp6EFbrO/jjIueKNioWvM8gz5WZgJWEzp8trKORzORSUWEewWmohpwkxUh/sn8oTpzNLNqA==
   ntlm: false
   remove_files: true
+  aspnet_core: true
   artifact: IgniteBot
